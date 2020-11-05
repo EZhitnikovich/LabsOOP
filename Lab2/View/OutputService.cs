@@ -1,10 +1,10 @@
 using System;
 
-namespace Lab2.Services
+namespace Lab2
 {
     public static class OutputService
     {
-        public static void ShowMessage(string msg)
+        public static void ShowMessage<T>(T msg)
         {
             Console.WriteLine(msg);
         }

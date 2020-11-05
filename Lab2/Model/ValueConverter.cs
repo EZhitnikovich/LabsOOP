@@ -1,6 +1,6 @@
-namespace Lab2.Services
+namespace Lab2
 {
-    public static class ConverterService
+    public static class ValueConverter
     {
         public static double GetCalcResult(double value, int coefficient)
         {

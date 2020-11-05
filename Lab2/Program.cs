@@ -1,13 +1,12 @@
-﻿using Lab2.Tasks;
-using Lab2.Services;
-
-namespace Lab2
+﻿namespace Lab2
 {
     class Program
     {
         static void Main(string[] args)
         {
             bool run = true;
+
+            MainController mainController = new MainController();
 
             while(run)
             {
@@ -24,11 +23,11 @@ namespace Lab2
                     case "0":
                         run = false;
                         break;
-                    case "1": Task1.StartTask(); break;
-                    case "2": Task2.StartTask(); break;
-                    case "3": Task3.StartTask(); break;
-                    case "4": Task4.StartTask(); break;
-                    case "5": Task5.StartTask(); break;
+                    case "1": mainController.CalculateDinosaurWeight(); break;
+                    case "2": mainController.CalculateFileSize(); break;
+                    case "3": mainController.CalculateDistance(); break;
+                    case "4": mainController.MakeSwap(); break;
+                    case "5": mainController.CompareCandyPrices(); break;
                     default:
                         OutputService.ShowMessage("Incorrect command");
                         break;
