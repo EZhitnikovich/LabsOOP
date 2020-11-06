@@ -1,6 +1,6 @@
 using System;
 
-namespace Lab2.Services
+namespace Lab2
 {
     public static class InputService
     {
