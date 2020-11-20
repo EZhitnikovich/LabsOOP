@@ -17,7 +17,7 @@ namespace Lab2
             double candiesPrice = candiesPricePerKg * candiesWeght;
             double gelatinousPrice = gelatinousPricePerKg * gelatinousWeight;
 
-            OutputService.ShowMessage($"{Round(candiesPrice/gelatinousPrice, 2)}");
+            OutputService.ShowMessage($"The coef of the price of candies to gelatines: {Round(candiesPrice/gelatinousPrice, 2)}");
         }
     }
 }
