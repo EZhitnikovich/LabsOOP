@@ -6,31 +6,25 @@
         {
             bool run = true;
 
-            MainController mainController = new MainController();
-
             while(run)
             {
-                OutputService.ShowMessage("0 - Stop program\n" +
-                                          "1 - Task with weight\n" +
-                                          "2 - Task with file size\n" +
-                                          "3 - Task with distance\n" +
-                                          "4 - Task with permutation\n" +
-                                          "5 - Task with candies price\n");
-
-                string item = InputService.GetUserMsg();
-                switch (item)
+                OutputService.ShowMessage("Input index:\n"+
+                                          "0 - exit\n"+
+                                          "1 - Convert dinosaur weight\n"+
+                                          "2 - Convert file size\n"+
+                                          "3 - Convert distance\n"+
+                                          "4 - Swap numbers\n"+
+                                          "5 - Candies shop\n");
+                string index = InputService.GetUserMsg();
+                switch (index)
                 {
-                    case "0":
-                        run = false;
-                        break;
-                    case "1": mainController.CalculateDinosaurWeight(); break;
-                    case "2": mainController.CalculateFileSize(); break;
-                    case "3": mainController.CalculateDistance(); break;
-                    case "4": mainController.MakeSwap(); break;
-                    case "5": mainController.CompareCandyPrices(); break;
-                    default:
-                        OutputService.ShowMessage("Incorrect command");
-                        break;
+                    case "0": run = false; break;
+                    case "1": TaskExecutor.Task1(); break;
+                    case "2": TaskExecutor.Task2(); break;
+                    case "3": TaskExecutor.Task3(); break;
+                    case "4": TaskExecutor.Task4(); break;
+                    case "5": TaskExecutor.Task5(); break;
+                    default: OutputService.ShowMessage("Incorrect index\n"); break;
                 }
             }
         }

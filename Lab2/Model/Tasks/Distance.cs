@@ -1,17 +1,13 @@
 namespace Lab2
 {
-    public class Distance
+    public static class Distance
     {
         // Task 3
-        public double Centimeters{get; private set;}
-        public double Metres{get; private set;}
-        public double Kilometers{get; private set;}
-
-        public Distance(double centimeters)
+        public static void Run(double value)
         {
-            this.Centimeters = centimeters;
-            this.Metres = ValueConverter.GetCalcResult(centimeters, 100);
-            this.Kilometers = ValueConverter.GetCalcResult(centimeters, 100*1000);
+            OutputService.ShowMessage($"Сentimeters = {value}\n");
+            OutputService.ShowMessage($"Metres = {ValueConverter.GetCalcResult(value, (int)CoefEnum.metres)}\n");
+            OutputService.ShowMessage($"Kilometers = {ValueConverter.GetCalcResult(value, (int)CoefEnum.kilometres)}\n");
         }
     }
 }
