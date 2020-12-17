@@ -6,8 +6,8 @@ namespace Lab3
 {
     class DataTypesTester<T> : IDataTypeTester
     {
-        public dynamic Value1 { get; set; }
-        public dynamic Value2 { get; set; }
+        public T Value1 { get; set; }
+        public T Value2 { get; set; }
 
         public DataTypesTester(T v1, T v2)
         {
