@@ -16,21 +16,10 @@ namespace Lab4.Utils
             outputService = oService;
         }
 
-        public bool GetNumber(out int number)
-        {
-            return int.TryParse(inputService.GetUserMsg(), out number);
-        }
-
         public bool GetNumber(out int number, string message)
         {
             outputService.ShowMessage(message);
             return int.TryParse(inputService.GetUserMsg(), out number);
-        }
-
-        public bool GetNumber(out double number, string message)
-        {
-            outputService.ShowMessage(message);
-            return double.TryParse(inputService.GetUserMsg(), out number);
         }
 
         public int[] GetNumbers(string message)

@@ -3,28 +3,17 @@ using Lab4.Utils;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Lab4.Model.Tasks.Common
 {
-    class Common3 : ITask
+    class Common3
     {
-        public string GetTaskResult(IOService ioService)
+        public string GetTaskResult(int number)
         {
-            string taskResult = "Incorrect data";
-            if (ioService.GetNumber(out int number, "Enter number"))
-            {
-                int[] numbers = new int[] { 2, 3, 5, 7, 11, 13, 17, 19 };
-                bool isMultiple = false;
-                foreach (var elem in numbers)
-                {
-                    if (number % elem == 0)
-                    {
-                        isMultiple = true;
-                    }
-                }
+            var numbers = new int[] { 2, 3, 5, 7, 11, 13, 17, 19 };
 
-                taskResult = $"is the number is a multiple of the numbers 2, 3, 5, 7, 11, 13, 17, 19? - {isMultiple}";
-            }
+            string taskResult = $"is the number is a multiple of the numbers 2, 3, 5, 7, 11, 13, 17, 19? - {numbers.Any(x => number % x == 0)}";
 
             return taskResult;
         }

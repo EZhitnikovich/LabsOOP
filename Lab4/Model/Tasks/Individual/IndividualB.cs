@@ -6,37 +6,45 @@ using System.Text;
 
 namespace Lab4.Model.Tasks.Individual
 {
-    class IndividualB : ITask
+    class IndividualB
     {
-        public string GetTaskResult(IOService ioService)
+        public string GetTaskResult(int number)
         {
-            string taskResult = "Incorrect data";
+            string taskResult = GetDescription(number);
+            
+            return taskResult;
+        }
 
-            if(ioService.GetNumber(out int rating, "Enter rating"))
+        private string GetDescription(int rating)
+        {
+            string desctiption;
+
+            if (rating >= 0 && rating < 2)
             {
-                if (rating >= 0 && rating < 2)
-                {
-                    taskResult = "very bad";
-                }
-                else if(rating >= 2 && rating < 4)
-                {
-                    taskResult = "poor";
-                }
-                else if(rating >=4 && rating < 6)
-                {
-                    taskResult = "satisfactory";
-                }
-                else if(rating >= 6 && rating < 8)
-                {
-                    taskResult = "good";
-                }
-                else if(rating >= 8 && rating <= 10)
-                {
-                    taskResult = "very well";
-                }
+                desctiption = "very bad";
+            }
+            else if (rating >= 2 && rating < 4)
+            {
+                desctiption = "poor";
+            }
+            else if (rating >= 4 && rating < 6)
+            {
+                desctiption = "satisfactory";
+            }
+            else if (rating >= 6 && rating < 8)
+            {
+                desctiption = "good";
+            }
+            else if (rating >= 8 && rating <= 10)
+            {
+                desctiption = "very well";
+            }
+            else
+            {
+                desctiption = "Unknown";
             }
 
-            return taskResult;
+            return desctiption;
         }
     }
 }

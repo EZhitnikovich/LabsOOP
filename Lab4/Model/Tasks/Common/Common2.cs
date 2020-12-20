@@ -7,31 +7,37 @@ using System.Text;
 
 namespace Lab4.Model.Tasks.Common
 {
-    class Common2 : ITask
+    class Common2
     {
-        public string GetTaskResult(IOService ioService)
+        public string GetTaskResult(int[] numbers)
         {
-            int[] numbers = ioService.GetNumbers("Enter numbers in one line (separated by a space)");
-            string taskResult = "Incorrect data";
-            if (numbers.Length != 0)
+            string taskResult;
+            try
             {
-                bool isAllEqual = true;
+                taskResult = CheckNumbers(numbers);
+            }
+            catch
+            {
+                taskResult = "Incorrect data";
+            }
+            return taskResult;
+        }
 
-                for (int i = 0; i < numbers.Length - 1; i++)
-                {
-                    if (numbers[i] != numbers[i + 1])
-                    {
-                        isAllEqual = false;
-                    }
-                }
-
-                if (isAllEqual)
-                    taskResult =  "All numbers are equal";
-                else
-                    taskResult = $"Maximum = {numbers.Max()}, minimum = {numbers.Min()}";
+        private string CheckNumbers(params int[] numbers)
+        {
+            if (numbers.Length == 0)
+            {
+                throw new Exception("Array can't be empty");
             }
 
-            return taskResult;
+            string result;
+
+            if (numbers.All(x => x == numbers[0]))
+                result = "All numbers are equal";
+            else
+                result = $"Maximum = {numbers.Max()}, minimum = {numbers.Min()}";
+
+            return result;
         }
     }
 }

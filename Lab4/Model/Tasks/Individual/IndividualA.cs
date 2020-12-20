@@ -6,27 +6,40 @@ using System.Text;
 
 namespace Lab4.Model.Tasks.Individual
 {
-    class IndividualA : ITask
+    class IndividualA
     {
-        public string GetTaskResult(IOService ioService)
+        public string GetTaskResult(int[] arr)
         {
-            string taskResult = "Incorrect data";
-            if(ioService.GetNumber(out double first, "Enter first number") &&
-                ioService.GetNumber(out double second, "Enter second number") &&
-                ioService.GetNumber(out double third, "Enter third number"))
-            {
-                bool isTriangle = false;
-                if (first + second > third &&
-                    first + third > second &&
-                    second + third > first)
-                {
-                    isTriangle = true;
-                }
+            string taskResult;
 
-                taskResult = $"Triangle exists? = {isTriangle}";
+            try
+            {
+                taskResult = $"Triangle exists? = {CheckTriangle(arr)}";
+            }
+            catch
+            {
+                taskResult = "Incorrect data";
             }
 
             return taskResult;
+        }
+
+        private bool CheckTriangle(int[] arr)
+        {
+            if(arr.Length != 3)
+            {
+                throw new Exception("The triangle must have 3 sides");
+            }
+
+            bool isTriangle = false;
+            if (arr[0] + arr[1] > arr[2] &&
+                arr[0] + arr[2] > arr[1] &&
+                arr[1] + arr[2] > arr[0])
+            {
+                isTriangle = true;
+            }
+
+            return isTriangle;
         }
     }
 }

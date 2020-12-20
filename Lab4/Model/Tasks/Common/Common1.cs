@@ -6,44 +6,28 @@ using System.Text;
 
 namespace Lab4.Model.Tasks.Common
 {
-    class Common1 : ITask
+    class Common1
     {
-        public string GetTaskResult(IOService ioService)
+        public string GetTaskResult(int years)
         {
             string taskResult;
-            if (ioService.GetNumber(out int years, "Enter years"))
-            {
-                int heads = CountHeads(years);
-                int eyes = CountEyes(heads);
-                taskResult = $"Heads = {heads}, eyes = {eyes}";
-            }
-            else
-            {
-                taskResult = "Incorrect data";
-            }
+            int heads = CountHeads(years);
+            int eyes = CountEyes(heads);
+            taskResult = $"Heads = {heads}, eyes = {eyes}";
+
             return taskResult;
         }
 
         private int CountHeads(int years)
         {
+            if(years < 0)
+            {
+                throw new ArgumentException("Years can't be negative");
+            }
+
             const int startHeads = 3;
             const int twoHundred = 200, threeHundred = 300;
-            int heads;
-            //for(int i = 0; i <= years; i++)
-            //{
-            //    if(i > 0 && i < 200)
-            //    {
-            //        heads += 3;
-            //    }
-            //    else if(i >= 200 && i < 300)
-            //    {
-            //        heads += 2;
-            //    }
-            //    else if(i >= 300)
-            //    {
-            //        heads++;
-            //    }
-            //}
+            int heads = startHeads;
 
             if (years > 0 && years < twoHundred)
             {
@@ -57,15 +41,11 @@ namespace Lab4.Model.Tasks.Common
             {
                 heads = startHeads + 3 * (twoHundred) + 2 * (threeHundred - twoHundred) + (years - threeHundred);
             }
-            else
-            {
-                throw new Exception("Incorrect data");
-            }
 
             return heads;
         }
 
-        private int CountEyes(int heads)
+        private static int CountEyes(int heads)
         {
             return heads * 2;
         }
